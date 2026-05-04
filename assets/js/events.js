@@ -1,7 +1,7 @@
 const EVENTS_CONFIG = {
   formUrl: "https://tally.so/r/rj20WM",
   whatsappNumber: "34673168611",
-  whatsappMessage: "Hola, quiero solicitar información sobre servicios para eventos de Yoan Darz Events.",
+  whatsappMessage: "Hola, Yoan. Quiero solicitar información sobre servicios para eventos de Yoan Darz Events.\n\nNombre:\nTipo de evento:\nFecha:\nHora aproximada:\nLugar:\nNúmero aproximado de invitados:\n\nServicios que me interesan:\n[ ] DJ\n[ ] Sonido\n[ ] Coctelería\n[ ] Música en vivo\n[ ] Iluminación\n[ ] Vídeo/proyección\n[ ] Otro:\n\nEvento:\n[ ] Interior\n[ ] Exterior\n[ ] Mixto\n[ ] No lo sé todavía\n\nDuración aproximada:\nObservaciones:",
   telegramUrl: "https://t.me/YoanDarz",
   social: {
     instagram: "https://www.instagram.com/yoandarz_events/",

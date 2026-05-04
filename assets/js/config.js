@@ -5,7 +5,7 @@ const SITE_CONFIG = {
     formUrl: "https://tally.so/r/kdO7KJ",
     whatsappNumber: "34673168611",
     whatsappMessage:
-      "Hola, me gustaría información sobre tu servicio de violonchelo para eventos. Para que puedas brindarme la mejor información posible, te comparto los detalles de mi evento:\n\nFecha: ___________\nHora: ___________\nLugar: ___________\nTipo de evento (boda, cumpleaños, aniversario, empresa, otro): ___________",
+      "Hola, Yoan. Quiero solicitar información sobre música en vivo para un evento.\n\nNombre:\nTipo de evento:\nFecha:\nHora aproximada:\nLugar:\n\nFormato deseado:\n[ ] Violonchelo\n[ ] Voz\n[ ] Violonchelo y voz\n[ ] Otro:\n\nDuración aproximada:\nPiezas o estilo musical que me interesa:\nObservaciones:",
     telegramUrl: "https://t.me/YoanDarz",
     social: {
       instagram: "https://www.instagram.com/yoandarz_musician/",
