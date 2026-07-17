@@ -163,7 +163,7 @@ const SITE_CONFIG = {
   conditions: [
     {
       title: "Repertorio y solicitudes especiales",
-      text: "El repertorio disponible es amplio, variado y se actualiza de forma continua. Puede consultarse y seleccionarse directamente en esta página web. Si se solicita alguna pieza fuera del repertorio publicado, se aplicará un suplemento adicional del 30% por cada canción solicitada. Estas peticiones deben hacerse al menos 20 días antes del evento."
+      text: "El repertorio disponible es amplio, variado y se actualiza de forma continua. Puede consultarse y seleccionarse directamente en esta página web de dos maneras: para proponer las piezas concretas de una actuación o para señalar canciones imprescindibles dentro de una actuación más amplia, dejando el resto del repertorio a criterio del músico. La selección enviada constituye una solicitud y quedará confirmada al acordar el servicio. Si se solicita alguna pieza fuera del repertorio publicado, se aplicará un suplemento adicional del 30% por cada canción solicitada. Estas peticiones deben hacerse al menos 20 días antes del evento."
     },
     {
       title: "Reserva y confirmación",
