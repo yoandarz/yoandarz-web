@@ -815,3 +815,242 @@ select {
     width: 100%;
   }
 }
+
+/* Repertorio interactivo */
+.repertoire-guide {
+  margin-bottom: 22px;
+  padding: 22px;
+  border-radius: var(--radius-medium);
+  border: 1px solid rgba(197, 154, 58, 0.2);
+  background: rgba(197, 154, 58, 0.07);
+}
+
+.repertoire-guide h3 {
+  margin: 0 0 16px;
+  color: var(--gold-soft);
+  font-size: 1.25rem;
+}
+
+.selection-mode-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.selection-mode-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  min-height: 100%;
+  padding: 17px;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-small);
+  background: rgba(255, 255, 255, 0.035);
+  cursor: pointer;
+}
+
+.selection-mode-option:has(input:checked) {
+  border-color: var(--gold);
+  background: rgba(197, 154, 58, 0.12);
+}
+
+.selection-mode-option input {
+  margin-top: 4px;
+  accent-color: var(--gold);
+}
+
+.selection-mode-option span {
+  display: grid;
+  gap: 5px;
+}
+
+.selection-mode-option strong {
+  color: var(--text-main);
+}
+
+.selection-mode-option small,
+.repertoire-guide-note {
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.repertoire-guide-note {
+  margin: 16px 0 0;
+  font-size: 0.98rem;
+}
+
+.selection-summary {
+  margin-bottom: 22px;
+  padding: 22px;
+  border-radius: var(--radius-medium);
+  border: 1px solid var(--border-soft);
+  background: rgba(8, 7, 6, 0.52);
+}
+
+.selection-summary-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.selection-eyebrow {
+  margin: 0 0 5px;
+  color: var(--gold-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.selection-summary h3 {
+  margin: 0;
+  font-size: 1.22rem;
+}
+
+.selection-clear {
+  border: 0;
+  background: transparent;
+  color: var(--gold-soft);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.selection-clear:disabled {
+  opacity: 0.42;
+  cursor: default;
+}
+
+.selected-song-list {
+  display: grid;
+  gap: 8px;
+  margin: 18px 0 0;
+  padding-left: 22px;
+  color: var(--text-main);
+}
+
+.selected-song-list:empty {
+  display: none;
+}
+
+.selected-song-list span {
+  color: var(--text-muted);
+}
+
+.selection-help {
+  margin: 14px 0 0;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.selection-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.selection-actions .button {
+  min-height: 46px;
+  padding: 11px 18px;
+  cursor: pointer;
+}
+
+.selection-actions .button:disabled {
+  opacity: 0.42;
+  cursor: default;
+  transform: none;
+}
+
+.selection-status {
+  min-height: 1.5em;
+  margin: 12px 0 0;
+  color: var(--gold-soft);
+  font-size: 0.96rem;
+}
+
+.repertoire-item {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.repertoire-item.is-selected {
+  border-color: rgba(224, 191, 106, 0.72);
+  background: rgba(197, 154, 58, 0.1);
+}
+
+.repertoire-main {
+  min-width: 0;
+}
+
+.repertoire-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.repertoire-action-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 8px 13px;
+  border: 1px solid var(--border-soft);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.045);
+  color: var(--text-main);
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.repertoire-action-button:hover {
+  transform: translateY(-1px);
+  border-color: var(--gold);
+  background: rgba(197, 154, 58, 0.12);
+}
+
+.repertoire-listen-button {
+  color: var(--gold-soft);
+}
+
+.repertoire-select-button.is-selected {
+  border-color: var(--gold);
+  background: linear-gradient(135deg, rgba(197, 154, 58, 0.3), rgba(141, 100, 32, 0.22));
+  color: var(--gold-soft);
+}
+
+@media (max-width: 760px) {
+  .selection-mode-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .repertoire-item {
+    grid-template-columns: 1fr;
+  }
+
+  .repertoire-actions {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .selection-summary-header {
+    align-items: flex-start;
+  }
+
+  .repertoire-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .repertoire-duration {
+    margin-bottom: 2px;
+  }
+
+  .repertoire-action-button {
+    width: 100%;
+  }
+}
