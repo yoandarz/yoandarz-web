@@ -151,11 +151,57 @@
           <p class="kicker">Repertorio</p>
           <h2 class="section-title">Un repertorio amplio, flexible y pensado para distintos momentos.</h2>
           <p class="section-lead">
-            El repertorio puede adaptarse según el tipo de evento. Para solicitudes especiales o piezas fuera de esta lista, consulta las condiciones de contratación.
+            Consulta el repertorio disponible, escucha mis interpretaciones cuando exista una grabación y selecciona las piezas que te interesen. Puedes elegir canciones concretas para una actuación breve o señalar las que no deben faltar en un evento de mayor duración. Para solicitudes especiales o piezas fuera de esta lista, consulta las condiciones de contratación.
           </p>
         </div>
 
         <div class="repertoire-panel">
+          <div class="repertoire-guide">
+            <h3>¿Cómo quieres usar el repertorio?</h3>
+            <div class="selection-mode-grid" role="radiogroup" aria-label="Tipo de selección musical">
+              <label class="selection-mode-option">
+                <input type="radio" name="selection-mode" value="exact" data-selection-mode checked>
+                <span>
+                  <strong>Selección concreta</strong>
+                  <small>Quiero proponer las piezas específicas de la actuación.</small>
+                </span>
+              </label>
+
+              <label class="selection-mode-option">
+                <input type="radio" name="selection-mode" value="must" data-selection-mode>
+                <span>
+                  <strong>Canciones imprescindibles</strong>
+                  <small>Quiero señalar las piezas que no deben faltar y dejar el resto del repertorio a criterio del músico.</small>
+                </span>
+              </label>
+            </div>
+            <p class="repertoire-guide-note">
+              Después podrás copiar la lista o enviarla por WhatsApp. El texto copiado también puede pegarse en correo, Instagram o Telegram.
+            </p>
+          </div>
+
+          <div class="selection-summary" data-selection-summary>
+            <div class="selection-summary-header">
+              <div>
+                <p class="selection-eyebrow">Tu selección</p>
+                <h3 data-selection-title>Ninguna pieza seleccionada</h3>
+              </div>
+              <button class="selection-clear" type="button" data-clear-selection disabled>Vaciar</button>
+            </div>
+
+            <ul class="selected-song-list" data-selected-list></ul>
+            <p class="selection-help" data-selection-help>
+              Pulsa «Seleccionar» junto a las canciones que quieras añadir.
+            </p>
+
+            <div class="selection-actions">
+              <button class="button" type="button" data-copy-selection disabled>Copiar selección</button>
+              <button class="button button-primary" type="button" data-send-selection disabled>Enviar por WhatsApp</button>
+            </div>
+
+            <p class="selection-status" data-selection-status aria-live="polite"></p>
+          </div>
+
           <div class="repertoire-tools">
             <input class="search-input" type="search" placeholder="Buscar por canción, artista, compositor o género" data-search>
             <select class="category-select" data-category-filter aria-label="Filtrar por categoría"></select>
@@ -280,6 +326,7 @@
   </footer>
 
   <script src="../assets/js/config.js"></script>
+  <script src="../assets/js/repertoire-videos.js"></script>
   <script src="../assets/js/musician.js"></script>
 </body>
 </html>
