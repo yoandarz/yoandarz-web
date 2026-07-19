@@ -8,7 +8,7 @@ const SITE_CONFIG = {
       "Hola, Yoan. Quiero solicitar información sobre música en vivo para un evento.\n\nNombre:\nTipo de evento:\nFecha:\nHora aproximada:\nLugar:\n\nFormato deseado:\n[ ] Violonchelo\n[ ] Voz\n[ ] Violonchelo y voz\n[ ] Otro:\n\nDuración aproximada:\nPiezas o estilo musical que me interesa:\nObservaciones:",
     telegramUrl: "https://t.me/YoanDarz",
     social: {
-      instagram: "https://www.instagram.com/yoandarz_musician/",
+      instagram: "https://www.instagram.com/yoandarz/",
       tiktok: "https://www.tiktok.com/@yoandarz.music",
       youtube: "https://www.youtube.com/@yoandarz/videos",
       facebook: "https://www.facebook.com/yoandarz/",
