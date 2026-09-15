@@ -52,6 +52,103 @@ const REPERTOIRE_STORAGE_KEY = "yoandarz-musician-selected-repertoire";
 const REPERTOIRE_MODE_STORAGE_KEY = "yoandarz-musician-selection-mode";
 const selectedRepertoireKeys = new Set(loadSelectedRepertoire());
 
+
+const CONTACT_NOTICE_SESSION_KEY = "yoandarz-musician-contact-notice-seen";
+let contactNoticeSeenFallback = false;
+let pendingContactAction = null;
+let contactNoticePreviousFocus = null;
+
+function hasSeenContactNotice() {
+  if (contactNoticeSeenFallback) return true;
+
+  try {
+    return sessionStorage.getItem(CONTACT_NOTICE_SESSION_KEY) === "1";
+  } catch {
+    return contactNoticeSeenFallback;
+  }
+}
+
+function markContactNoticeSeen() {
+  contactNoticeSeenFallback = true;
+
+  try {
+    sessionStorage.setItem(CONTACT_NOTICE_SESSION_KEY, "1");
+  } catch {
+    // La sesión seguirá recordándolo mientras esta página permanezca abierta.
+  }
+}
+
+function closeContactNotice({ markSeen = true } = {}) {
+  const notice = document.querySelector("[data-contact-notice]");
+  if (!notice) return;
+
+  if (markSeen) markContactNoticeSeen();
+
+  notice.hidden = true;
+  document.body.classList.remove("contact-notice-open");
+  pendingContactAction = null;
+
+  if (contactNoticePreviousFocus instanceof HTMLElement) {
+    contactNoticePreviousFocus.focus({ preventScroll: true });
+  }
+
+  contactNoticePreviousFocus = null;
+}
+
+function openContactNotice(action) {
+  const notice = document.querySelector("[data-contact-notice]");
+
+  if (!notice || hasSeenContactNotice()) {
+    action();
+    return;
+  }
+
+  pendingContactAction = action;
+  contactNoticePreviousFocus = document.activeElement;
+  notice.hidden = false;
+  document.body.classList.add("contact-notice-open");
+
+  const readButton = notice.querySelector("[data-contact-notice-read]");
+  readButton?.focus();
+}
+
+function setupContactNotice() {
+  const notice = document.querySelector("[data-contact-notice]");
+  if (!notice) return;
+
+  const closeButton = notice.querySelector("[data-contact-notice-close]");
+  const readButton = notice.querySelector("[data-contact-notice-read]");
+  const continueButton = notice.querySelector("[data-contact-notice-continue]");
+
+  closeButton?.addEventListener("click", () => {
+    closeContactNotice();
+  });
+
+  readButton?.addEventListener("click", () => {
+    markContactNoticeSeen();
+    notice.hidden = true;
+    document.body.classList.remove("contact-notice-open");
+    pendingContactAction = null;
+    contactNoticePreviousFocus = null;
+  });
+
+  continueButton?.addEventListener("click", () => {
+    const action = pendingContactAction;
+    markContactNoticeSeen();
+    notice.hidden = true;
+    document.body.classList.remove("contact-notice-open");
+    pendingContactAction = null;
+    contactNoticePreviousFocus = null;
+    action?.();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !notice.hidden) {
+      closeContactNotice();
+    }
+  });
+}
+
 function loadSelectedRepertoire() {
   try {
     const saved = JSON.parse(localStorage.getItem(REPERTOIRE_STORAGE_KEY) || "[]");
@@ -343,7 +440,9 @@ function setupRepertoireSelection() {
 
   sendButton?.addEventListener("click", () => {
     const message = buildSelectionMessage();
-    window.open(buildWhatsAppUrl(message), "_blank", "noopener,noreferrer");
+    openContactNotice(() => {
+      window.open(buildWhatsAppUrl(message), "_blank", "noopener,noreferrer");
+    });
   });
 
   modeInputs.forEach((input) => {
@@ -363,18 +462,40 @@ function setupLinks() {
     link.href = SITE_CONFIG.musician.formUrl;
     link.target = "_blank";
     link.rel = "noopener noreferrer";
+
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      openContactNotice(() => {
+        window.open(SITE_CONFIG.musician.formUrl, "_blank", "noopener,noreferrer");
+      });
+    });
   });
 
   whatsappLinks.forEach((link) => {
-    link.href = buildWhatsAppUrl();
+    const whatsappUrl = buildWhatsAppUrl();
+    link.href = whatsappUrl;
     link.target = "_blank";
     link.rel = "noopener noreferrer";
+
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      openContactNotice(() => {
+        window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+      });
+    });
   });
 
   telegramLinks.forEach((link) => {
     link.href = SITE_CONFIG.musician.telegramUrl;
     link.target = "_blank";
     link.rel = "noopener noreferrer";
+
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      openContactNotice(() => {
+        window.open(SITE_CONFIG.musician.telegramUrl, "_blank", "noopener,noreferrer");
+      });
+    });
   });
 
   Object.entries(SITE_CONFIG.musician.social).forEach(([name, url]) => {
@@ -409,6 +530,7 @@ function setupMenu() {
 
 document.addEventListener("DOMContentLoaded", () => {
   restoreSelectionMode();
+  setupContactNotice();
   setupLinks();
   setupMenu();
   renderVideos();
