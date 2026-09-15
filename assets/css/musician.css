@@ -1105,3 +1105,111 @@ select {
     width: 100%;
   }
 }
+
+/* Aviso previo al contacto */
+body.contact-notice-open {
+  overflow: hidden;
+}
+
+.contact-notice[hidden] {
+  display: none;
+}
+
+.contact-notice {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.contact-notice-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.76);
+  backdrop-filter: blur(8px);
+}
+
+.contact-notice-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(680px, 100%);
+  padding: 34px;
+  border: 1px solid rgba(197, 154, 58, 0.5);
+  border-radius: var(--radius-large);
+  background:
+    radial-gradient(circle at top right, rgba(197, 154, 58, 0.15), transparent 36%),
+    #12100d;
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.68);
+}
+
+.contact-notice-dialog h2 {
+  margin: 12px 44px 0 0;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  line-height: 1.12;
+}
+
+.contact-notice-dialog > p:not(.kicker) {
+  margin: 20px 0 0;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1.72;
+}
+
+.contact-notice-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--border-soft);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-main);
+  cursor: pointer;
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.contact-notice-close:hover,
+.contact-notice-close:focus-visible {
+  border-color: var(--gold);
+  background: rgba(197, 154, 58, 0.12);
+}
+
+.contact-notice-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.contact-notice-actions .button {
+  cursor: pointer;
+}
+
+@media (max-width: 640px) {
+  .contact-notice {
+    padding: 14px;
+  }
+
+  .contact-notice-dialog {
+    padding: 28px 22px 22px;
+  }
+
+  .contact-notice-dialog h2 {
+    margin-right: 38px;
+  }
+
+  .contact-notice-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .contact-notice-actions .button {
+    width: 100%;
+  }
+}
+
