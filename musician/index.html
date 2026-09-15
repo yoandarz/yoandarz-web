@@ -32,10 +32,10 @@
         <a href="#inicio">Inicio</a>
         <a href="#sobre-mi">Sobre mí</a>
         <a href="#servicios">Servicios</a>
+        <a href="#condiciones">Condiciones</a>
         <a href="#repertorio">Repertorio</a>
         <a href="#videos">Vídeos</a>
         <a href="#galeria">Galería</a>
-        <a href="#condiciones">Condiciones</a>
         <a href="../events/index.html">Events</a>
         <a class="nav-cta" href="#contacto">Contacto</a>
       </nav>
@@ -142,6 +142,20 @@
             <p>Propuestas musicales para recepciones, actos institucionales, eventos de empresa, inauguraciones y encuentros profesionales.</p>
           </article>
         </div>
+      </div>
+    </section>
+
+    <section class="section" id="condiciones">
+      <div class="section-inner">
+        <div class="section-header section-header-wide">
+          <p class="kicker">Condiciones</p>
+          <h2 class="section-title">Condiciones de contratación.</h2>
+          <p class="section-lead">
+            Al solicitar el servicio, el cliente reconoce y acepta estas condiciones.
+          </p>
+        </div>
+
+        <div class="conditions-list" data-conditions></div>
       </div>
     </section>
 
@@ -253,20 +267,6 @@
       </div>
     </section>
 
-    <section class="section" id="condiciones">
-      <div class="section-inner">
-        <div class="section-header section-header-wide">
-          <p class="kicker">Condiciones</p>
-          <h2 class="section-title">Condiciones de contratación.</h2>
-          <p class="section-lead">
-            Al solicitar el servicio, el cliente reconoce y acepta estas condiciones.
-          </p>
-        </div>
-
-        <div class="conditions-list" data-conditions></div>
-      </div>
-    </section>
-
     <section class="section" id="contacto">
       <div class="section-inner">
         <div class="section-header section-header-wide">
@@ -318,6 +318,38 @@
       </div>
     </section>
   </main>
+
+
+  <div class="contact-notice" data-contact-notice hidden>
+    <div class="contact-notice-backdrop" aria-hidden="true"></div>
+    <section
+      class="contact-notice-dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="contact-notice-title"
+      aria-describedby="contact-notice-text"
+    >
+      <button
+        class="contact-notice-close"
+        type="button"
+        aria-label="Cerrar aviso"
+        data-contact-notice-close
+      >
+        ×
+      </button>
+
+      <p class="kicker">Antes de solicitar el servicio</p>
+      <h2 id="contact-notice-title">Te recomendamos revisar las condiciones de contratación.</h2>
+      <p id="contact-notice-text">
+        Allí se explican aspectos importantes sobre repertorio, solicitudes especiales, desplazamientos, cambios, duración del servicio y posibles costes adicionales. Puedes leerlas ahora o continuar directamente con tu solicitud.
+      </p>
+
+      <div class="contact-notice-actions">
+        <a class="button button-primary" href="#condiciones" data-contact-notice-read>Leer condiciones</a>
+        <button class="button" type="button" data-contact-notice-continue>Continuar al contacto</button>
+      </div>
+    </section>
+  </div>
 
   <footer class="site-footer">
     <div class="footer-inner">
